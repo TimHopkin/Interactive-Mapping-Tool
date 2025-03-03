@@ -87,7 +87,7 @@ const MapComponent = ({
       // Force map to refresh to apply styles
       map.invalidateSize();
     }
-  }, [map, preferences]);
+  }, [map, preferences, preferences.textSize, preferences.highContrast, preferences.mapControls]);
 
   const onEachFeature = (feature, layer) => {
     if (feature.properties) {
@@ -173,6 +173,16 @@ const MapComponent = ({
     setShowDataTable(!showDataTable);
   };
 
+  // Create a ref for the map instance
+  const mapRef = useRef(null);
+  
+  // Use effect to set the map when the ref changes
+  useEffect(() => {
+    if (mapRef.current) {
+      setMap(mapRef.current);
+    }
+  }, [mapRef]);
+  
   return (
     <div className="map-component" ref={mapContainerRef}>
       <div 
@@ -194,7 +204,7 @@ const MapComponent = ({
           center={center} 
           zoom={zoom} 
           style={{ height: '100%', width: '100%' }}
-          whenCreated={setMap}
+          ref={mapRef}
           zoomControl={false}
           attributionControl={true}
           onMoveEnd={handleMapMove}

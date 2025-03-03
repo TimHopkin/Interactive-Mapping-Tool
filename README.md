@@ -11,6 +11,10 @@ A human-centered, accessible web platform for analyzing and visualizing land-rel
 - **Accessible interface**: Full screen reader support, keyboard navigation, and color contrast options
 - **User-friendly dashboard**: Intuitive controls with comprehensive help documentation
 
+## Deployment with Netlify
+
+This application is configured for Netlify deployment. The frontend directory contains a `netlify.toml` file with the necessary configuration for building and deploying the React application.
+
 ## Human-Centered Design Approach
 
 This tool prioritizes inclusive, accessible design throughout the application:
@@ -65,11 +69,17 @@ This tool prioritizes inclusive, accessible design throughout the application:
    cd backend
    pip install -r requirements.txt
    ```
-4. Configure environment variables by copying `.env.example` to `.env` and updating values
+4. Configure environment variables by copying `env.example` to `.env` and updating values
 5. Start the development environment:
    ```
    docker-compose up
    ```
+
+### Configuration Files
+
+- `netlify.toml` - Configuration for Netlify deployment
+- `env.example` - Example environment variables
+- `docker-compose.yml` - Docker configuration for local development
 
 ## Accessibility Features
 

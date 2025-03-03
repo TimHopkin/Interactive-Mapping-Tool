@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
 
 // Import pages and components
@@ -37,15 +37,21 @@ function App() {
                 <Route path="/map" element={<MapView />} />
                 <Route path="/upload" element={<DataUpload />} />
                 <Route path="/analysis" element={<Analysis />} />
+                {/* Add routes for footer links */}
+                <Route path="/accessibility" element={<h1>Accessibility Information</h1>} />
+                <Route path="/help" element={<h1>Help Resources</h1>} />
+                <Route path="/feedback" element={<h1>Provide Feedback</h1>} />
+                {/* Add a 404 route */}
+                <Route path="*" element={<h1>404 - Page Not Found</h1>} />
               </Routes>
             </main>
             <footer className="app-footer">
               <div className="footer-content">
                 <p>© 2025 Interactive Land Analysis Mapping Tool</p>
                 <div className="footer-links">
-                  <a href="/accessibility">Accessibility</a>
-                  <a href="/help">Help Resources</a>
-                  <a href="/feedback">Provide Feedback</a>
+                  <Link to="/accessibility">Accessibility</Link>
+                  <Link to="/help">Help Resources</Link>
+                  <Link to="/feedback">Provide Feedback</Link>
                 </div>
               </div>
             </footer>

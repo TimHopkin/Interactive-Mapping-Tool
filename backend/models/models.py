@@ -64,7 +64,6 @@ class Layer(Base):
     
     # Relationships
     dataset = relationship('Dataset', back_populates='layers')
-    analysis = relationship('Analysis', back_populates='output_layers')
     features = relationship('Feature', back_populates='layer')
 
 class Feature(Base):
@@ -101,4 +100,4 @@ class Analysis(Base):
     # Relationships
     user = relationship('User', back_populates='analyses')
     dataset = relationship('Dataset', back_populates='analyses')
-    output_layers = relationship('Layer', back_populates='analysis')
+    output_layers = relationship('Layer', foreign_keys=[Layer.analysis_id])
